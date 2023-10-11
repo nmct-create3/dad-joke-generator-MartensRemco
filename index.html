@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Blockport - Sign in</title>
+    <title>Dad Joke Generator</title>
     <meta name="description" content="This is my HTML5 boilerplate.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#e85e00">
@@ -20,19 +20,25 @@
 </head>
 
 <body>
-    <h1>
-        Random Dad Joke
+    <h1 class="title">
+        <span class="span">Random</span> Dad Joke
     </h1>
-    <p>
-        I bought shoes from a drug dealer once. I don't know what he laced them with, but I was tripping all day.
-    </p>
-    <p>
-        Generate new joke
-    </p>
-    <hr>
-    <p>
-        Dad jokes based on <a href="https://icanhazdadjoke.com/">icanhazdadjoke.com</a>
-    </p>
+    <div class="content">
+        <p class="joke js-joke">
+            I bought shoes from a drug dealer once. I don't know what he laced them with, but I was tripping all day.
+        </p>
+        <div class="c-loading js-loading-state js-joke-loader u-hidden">
+            <span class="c-loading__placeholder c-loading__placeholder--full"></span>
+        </div>
+        <p class="button js-button">
+            Generate new joke
+        </p>
+    </div>
+    <footer>
+        <p class="footer">
+            Dad jokes based on <a href="https://icanhazdadjoke.com/">icanhazdadjoke.com</a>
+        </p>
+    </footer>
 </body>
 
 </html>

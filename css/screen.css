@@ -2,7 +2,6 @@
 #FONTS
 \*------------------------------------*/
 
-
 /*------------------------------------*\
 #Variables
 \*------------------------------------*/
@@ -68,6 +67,8 @@
     /*  = 72px */
 
     /* forms */
+    /* accents */
+    --global-page-accent-color: #3498db;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -100,6 +101,9 @@ html {
 
 body {
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 *,
@@ -506,8 +510,90 @@ input::placeholder {
 /*------------------------------------*\
 #COMPONENTS
 \*------------------------------------*/
+.title{
+    text-align: center;
+    color: black;
+}
+.joke{
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    color: var(--global-page-accent-color);
+    margin-bottom: 0.5rem;
+}
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 40px;
+    background-color: var(--global-page-accent-color);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 0 auto;
+    margin-top: 5rem;
+}
 
+.button:hover {
+    background-color: #2980b9;
+}
+.content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
+footer {
+    color: lightgray;
+    text-align: center;
+}
+.span{
+    color: var(--global-page-accent-color);
+}
+.c-loading{
+    gap: 0.4rem;
+    display: flex;
+    flex-direction: column;
+    /*TODO: shimmer / pulsation animation*/
+}
+@keyframes shimmer {
+    0% {
+        background-position: -200px 0;
+    }
+
+    100% {
+        background-position: 200px 0;
+    }
+}
+.c-loading__placeholder{
+    display: block;
+    width: 40%;
+    height: 1rem;
+    border-radius: 1.5rem;
+    background-color: lightgray;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite linear;
+}
+.c-loading__placeholder--half{
+    /*width: 25rem;*/
+    width: 25vw;
+}
+.c-loading__placeholder--full {
+    /*width: 50rem;*/
+    width: 50vw;
+}
+.u-hidden{
+    display: none;
+}
 
 /*------------------------------------*\
 #UTILITIES
