@@ -26,7 +26,7 @@ const init = function () {
     console.log('script loaded');
     displayJoke();
 }*/
-const ShowLoader = function () {
+/*const ShowLoader = function () {
     loadingDelay = setTimeout(() => {
         jokeLoader.classList.remove("u-hidden");
     }, 500);
@@ -39,37 +39,41 @@ const RemoveLoader = function () {
     }
     jokeLoader.classList.add("u-hidden");
     jokeLoader.classList.remove("u-hidden");
-}
-function showLoader() {
+}*/
+async function showLoader() {
     jokeLoader.classList.remove("u-hidden");
 }
 
-function hideLoader() {
+async function hideLoader() {
     jokeLoader.classList.add("u-hidden");
 }
 
-function fetchJoke() {
+async function fetchJoke() {
     const apiUrl = "https://icanhazdadjoke.com/";
 
-    showLoader(); 
-    jokeDisplay.textContent = ""; 
+    try {
+        await showLoader(); 
+        jokeDisplay.textContent = "";
 
-    fetch(apiUrl, {
-        headers: {
-            "Accept": "application/json",
-        },
-    })
-        .then((response) => response.json())
-        .then((data) => {
-            const jokeText = data.joke;
-            jokeDisplay.textContent = jokeText;
-        })
-        .catch((error) => {
-            console.error("Error fetching joke:", error);
-        })
-        .finally(() => {
-            hideLoader();
+        const response = await fetch(apiUrl, {
+            headers: {
+                "Accept": "application/json",
+            },
         });
+
+        if (!response.ok) {
+            throw new Error("Failed to fetch joke");
+        }
+
+        const data = await response.json();
+        const jokeText = data.joke;
+        jokeDisplay.textContent = jokeText;
+    } catch (error) {
+        console.error("Error fetching joke:", error);
+    } finally {
+        await hideLoader();
+    }
 }
+
 
 init();
